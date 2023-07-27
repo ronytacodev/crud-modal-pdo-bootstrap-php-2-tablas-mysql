@@ -12,7 +12,6 @@ if ($resultado === TRUE) {
     $_SESSION["msg"] = "Registro eliminado";
     header('Location: index.php');
 } else {
-    header('Location: index.php?mensaje=error');
     $_SESSION["color"] = "danger";
     $_SESSION["msg"] = "Error al intentar eliminar registro";
     header('Location: index.php');

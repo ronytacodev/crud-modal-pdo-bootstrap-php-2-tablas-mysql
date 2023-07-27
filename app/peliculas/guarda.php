@@ -10,8 +10,6 @@ if (empty($_POST["nombre"]) || empty($_POST["descripcion"]) || empty($_POST["gen
     exit();
 }
 
-include 'validarForm.php';
-
 require "../config/database.php";
 
 $nombre = $_POST["nombre"];

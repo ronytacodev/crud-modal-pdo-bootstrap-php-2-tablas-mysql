@@ -9,8 +9,6 @@ if (empty($_GET["id"]) || empty($_POST["nombre"]) || empty($_POST["descripcion"]
     exit();
 }
 
-include 'validarForm.php';
-
 require "../config/database.php";
 
 $id = $_GET["id"];

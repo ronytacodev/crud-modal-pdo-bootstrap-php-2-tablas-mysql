@@ -29,10 +29,15 @@ $dir = "posters/";
 
         <hr>
 
-        <div class="row justify-content-end">
+        <div class="row justify-content-center">
             <div class="col-auto mb-2">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevoModal">
-                    <i class="fa-solid fa-plus"></i> Nuevo Registro
+                    <i class="fa-solid fa-plus"></i> Agregar Película
+                </button>
+            </div>
+            <div class="col-auto mb-2">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addGeneroModal">
+                    <i class="fa-solid fa-plus"></i> Agregar Género
                 </button>
             </div>
         </div>
@@ -49,40 +54,48 @@ $dir = "posters/";
         } ?>
         <!-- fin alerta -->
 
-        <table class="table table-sm table-striped table-hover mt-4">
-            <thead class="table-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Género</th>
-                    <th>Póster</th>
-                    <th colspan="2">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($peliculas as $pelicula) { ?>
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <table class="table table-sm table-striped table-hover mt-4">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Género</th>
+                            <th>Póster</th>
+                            <th colspan="2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($peliculas as $pelicula) { ?>
 
-                    <tr>
-                        <th><?php echo $pelicula->id; ?></th>
-                        <td><?php echo $pelicula->nombre; ?></td>
-                        <td><?php echo $pelicula->descripcion; ?></td>
-                        <td><?php echo $pelicula->genero; ?></td>
-                        <td><img src="<?= $dir . $pelicula->id . '.jpg?n=' . time(); ?>" width="100"></td>
-                        <td>
-                            <a href="#edit_<?php echo $pelicula->id; ?>" class="btn btn-sm btn-warning" data-bs-toggle="modal"><i class="fa-solid fa-pen-to-square"></i></a>
-                        </td>
+                            <tr>
+                                <th><?php echo $pelicula->id; ?></th>
+                                <td><?php echo $pelicula->nombre; ?></td>
+                                <td><?php echo $pelicula->descripcion; ?></td>
+                                <td><?php echo $pelicula->genero; ?></td>
+                                <td><img src="<?= $dir . $pelicula->id . '.jpg?n=' . time(); ?>" width="100"></td>
+                                <td>
+                                    <a href="#edit_<?php echo $pelicula->id; ?>" class="btn btn-sm btn-warning" data-bs-toggle="modal"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </td>
 
-                        <td>
-                            <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarModal" data-bs-id="<?php echo $pelicula->id; ?>"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                        <?php include "editarModal.php"; ?>
-                    </tr>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarModal" data-bs-id="<?php echo $pelicula->id; ?>"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                                <?php include "editarModal.php"; ?>
+                            </tr>
 
-                <?php } ?>
+                        <?php } ?>
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+
+            <?php include "../generos/tabla.php"; ?>
+
+
+        </div>
     </div>
 
     <?php
